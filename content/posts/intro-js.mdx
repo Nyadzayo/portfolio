@@ -1,0 +1,52 @@
+---
+title: 'Understanding JavaScript Basics'
+summary:
+  'A deep dive into how closures work in JavaScript, with examples and use
+  cases.'
+image: '/images/posts/javascrip.png'
+author: 'kelvin Nyadzayo'
+publishedAt: '2024-08-29'
+slug: 'understanding-javascript-closures'
+---
+
+## Introduction
+
+JavaScript closures are a fundamental concept that every developer should
+understand. They are powerful tools that allow functions to retain access to
+variables in their outer scope even after that outer function has returned.
+
+## What is a Closure?
+
+In JavaScript, a closure is created when a function is defined within another
+function, and the inner function references variables from the outer function.
+The closure allows the inner function to access these variables even after the
+outer function has finished executing.
+
+```javascript
+function outerFunction() {
+  let outerVariable = 'I am from the outer scope'
+
+  function innerFunction() {
+    console.log(outerVariable)
+  }
+
+  return innerFunction
+}
+
+const myClosure = outerFunction()
+myClosure() // Output: "I am from the outer scope"
+```
+
+In this example, `innerFunction` is a closure that captures the variable
+`outerVariable` from its surrounding `outerFunction` scope.
+
+## Use Cases for Closures
+
+Closures are used in various scenarios, including:
+
+- **Data Privacy**: Creating private variables that can't be accessed directly
+  from outside the function.
+- **Partial Application**: Fixing some arguments of a function and creating a
+  new function with fewer arguments.
+- **Event Handling**: Attaching event listeners that retain access to the
+  variables in the function where they were defined.
