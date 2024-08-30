@@ -35,7 +35,7 @@ export async function getPostBySlug(slug:string): Promise<Post | null> {
 
 }
 
-export async function getPosts(limit:number): Promise<PostMetadata[]> {
+export async function getPosts(limit?:number): Promise<PostMetadata[]> {
     const files =  fs.readdirSync(rootDirectory)
     const posts = files
     .map(file => getPostMetaData(file))
@@ -47,7 +47,7 @@ export async function getPosts(limit:number): Promise<PostMetadata[]> {
         }
     })
 
-    if(limit){
+    if(typeof limit === "number" && limit > 0){
         return posts.slice(0,limit)
     }
 

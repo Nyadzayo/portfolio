@@ -1,4 +1,3 @@
-import Project from '@/components/ui/project'
 import { getProjects } from '@/lib/projects'
 import ProjectWithSearch from '@/components/ui/project-with-search'
 

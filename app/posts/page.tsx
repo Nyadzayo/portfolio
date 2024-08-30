@@ -1,4 +1,3 @@
-import Post from '@/components/ui/posts'
 import { getPosts } from '@/lib/posts'
 import PostWithSearch from '@/components/ui/posts-with-search'
 

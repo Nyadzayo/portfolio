@@ -35,7 +35,7 @@ export async function getProjectBySlug(slug:string): Promise<Project | null> {
 
 }
 
-export async function getProjects(limit:number): Promise<ProjectMetadata[]> {
+export async function getProjects(limit?: number): Promise<ProjectMetadata[]> {
     const files =  fs.readdirSync(rootDirectory)
     const projects= files
     .map(file => getProjectMetaData(file))
@@ -47,7 +47,7 @@ export async function getProjects(limit:number): Promise<ProjectMetadata[]> {
         }
     })
 
-    if(limit){
+    if(typeof limit === "number" && limit > 0){
         return projects.slice(0,limit)
     }
 
