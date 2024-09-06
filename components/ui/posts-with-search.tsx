@@ -21,7 +21,7 @@ export default function PostWithSearch({posts}: {posts: PostMetadata[]}){
 
     return (
         <div >
-            <div className="mb -12 flex items-center gap-3">
+            <div className="mb-12 flex items-center gap-3">
                 <Input
                     type="text"
                     placeholder="Search posts..."

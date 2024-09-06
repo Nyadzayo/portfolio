@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter'
-const rootDirectory = path.join(process.cwd(),'content', 'posts')
+const rootDirectory = path.join(process.cwd(),'content', 'projects')
 
 export type Project = {
     metadata: ProjectMetadata
@@ -14,14 +14,16 @@ export type ProjectMetadata = {
     image?:string
     author?:string
     publishedAt?: string 
-    slug: string
+    slug?: string
+    stack?: string
+    category?:string
 }
 
 export async function getProjectBySlug(slug:string): Promise<Project | null> {
     try {
         
         const filePath = path.join(rootDirectory,`${slug}.mdx`)
-        console.log('sluuuug ',filePath)
+        console.log('Fetching project from:', filePath);
     const fileContents = fs.readFileSync(filePath, {encoding: 'utf8'})
     const { data, content } = matter(fileContents)
 
@@ -55,10 +57,15 @@ export async function getProjects(limit?: number): Promise<ProjectMetadata[]> {
 }
 
 export function getProjectMetaData(filepath: string ):ProjectMetadata {
-    const slug = filepath.replace(/\.mdx$/,'');
+    const slug = filepath.replace(/\.mdx$/, '');
     const filePath = path.join(rootDirectory, filepath);
-    const fileContent = fs.readFileSync(filePath, {encoding:'utf8'})
-    const { data } = matter(fileContent);
-    return { ...data , slug }
+    try {
+        const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+        const { data } = matter(fileContent);
+        return { ...data, slug };
+    } catch (error) {
+        console.error('Error reading metadata file:', error);
+        return { slug }; // Return only the slug if metadata parsing fails
+    }
 
 }
