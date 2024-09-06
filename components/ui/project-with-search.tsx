@@ -21,7 +21,7 @@ export default function ProjectWithSearch({projects}: {projects: ProjectMetadata
 
     return (
         <div >
-            <div className="mb -12 flex items-center gap-3">
+            <div className="mb-12 flex items-center gap-3">
                 <Input
                     type="text"
                     placeholder="Search projects..."
