@@ -29,11 +29,8 @@ export default function Post({ projects }: { projects: ProjectMetadata[] }) {
                             <span key={index} className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
                             {techUsed}
                           </span>
-                        )))
-
-                        }
+                        ))) }
                     </div>
-                  
                 )
             }
           </Link>
