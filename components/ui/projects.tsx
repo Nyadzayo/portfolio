@@ -25,15 +25,12 @@ export default function Post({ projects }: { projects: ProjectMetadata[] }) {
             {
                 project.stack &&(
                     <div className="mt-4 flex flex-wrap gap-2">
-                        {project.stack.split(',').map((techUsed => (
-                            <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
+                        {project.stack.split(',').map(((techUsed, index)=> (
+                            <span key={index} className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
                             {techUsed}
                           </span>
-                        )))
-
-                        }
+                        ))) }
                     </div>
-                  
                 )
             }
           </Link>
