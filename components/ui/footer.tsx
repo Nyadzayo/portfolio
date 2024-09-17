@@ -3,45 +3,50 @@ import {JSX , SVGProps} from 'react';
 export default function Footer() {
     const navigation = [
         {
-            name:'github',
-            href:'https://www.linkedin.com/in/kelvinnyadzayo/',
-            icon:(props:JSX.IntrinsicAttributes& SVGProps<SVGAElement>) =>(
-                <svg fill='currentColor' viewBox='0 0 24 24'>
-                   
-    
-   
-    <path d="M156,0h-120c-19.875,0 -36,16.125 -36,36v120c0,19.875 16.125,36 36,36h120c19.875,0 36,-16.125 36,-36v-120c0,-19.875 -16.125,-36 -36,-36zM59.36539,162.98077h-29.82693l-0.17307,-89.30769h29.82692zM43.70192,61.99038h-0.17308c-9.75,0 -16.03846,-6.72115 -16.03846,-15.08653c0,-8.56731 6.49039,-15.0577 16.41347,-15.0577c9.92308,0 16.00961,6.49038 16.21153,15.0577c0,8.36538 -6.31731,15.08653 -16.41346,15.08653zM162.77885,162.98077h-30.08654v-48.51923c0,-11.74039 -3.11538,-19.73077 -13.61538,-19.73077c-8.01923,0 -12.34615,5.39423 -14.42308,10.61538c-0.77885,1.875 -0.98077,4.44231 -0.98077,7.06731v50.56731h-30.23077l-0.17308,-89.30769h30.23077l0.17308,12.60577c3.86538,-5.97116 10.29808,-14.42308 25.70192,-14.42308c19.09616,0 33.37501,12.46154 33.37501,39.25961v51.86539z"></path>
-   
-    
+            name: 'linkedin',
+            href: 'https://www.linkedin.com/in/kelvinnyadzayo/',
+            icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+                <svg fill='currentColor' viewBox='0 0 24 24' {...props}>
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zM8.339 19.339h-3.339v-10.678h3.339v10.678zM6.669 7.339c-1.071 0-1.939-0.868-1.939-1.939s0.868-1.939 1.939-1.939 1.939 0.868 1.939 1.939-0.868 1.939-1.939 1.939zM19.339 19.339h-3.339v-5.339c0-1.268-0.031-2.902-1.768-2.902-1.768 0-2.039 1.381-2.039 2.805v5.436h-3.339v-10.678h3.204v1.461h0.046c0.446-0.846 1.539-1.768 3.168-1.768 3.389 0 4.018 2.229 4.018 5.125v5.86z"></path>
+                </svg>
+            )
+        },
+        {
+            name: 'github',
+            href: 'https://github.com/Nyadzayo',
+            icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+                <svg fill='currentColor' viewBox='0 0 24 24' {...props}>
+                    <path d="M12 0c-6.627 0-12 5.373-12 12 0 5.302 3.438 9.8 8.205 11.387 0.6 0.111 0.82-0.261 0.82-0.577 0-0.285-0.011-1.04-0.017-2.04-3.338 0.724-4.042-1.61-4.042-1.61-0.546-1.387-1.333-1.756-1.333-1.756-1.089-0.745 0.083-0.729 0.083-0.729 1.205 0.084 1.838 1.237 1.838 1.237 1.07 1.835 2.809 1.305 3.495 0.998 0.108-0.775 0.418-1.305 0.762-1.605-2.665-0.305-5.466-1.332-5.466-5.931 0-1.31 0.469-2.381 1.236-3.221-0.124-0.303-0.535-1.523 0.117-3.176 0 0 1.008-0.322 3.301 1.23 0.957-0.266 1.983-0.399 3.003-0.404 1.02 0.005 2.047 0.138 3.006 0.404 2.291-1.552 3.297-1.23 3.297-1.23 0.653 1.653 0.243 2.873 0.119 3.176 0.77 0.84 1.235 1.911 1.235 3.221 0 4.61-2.803 5.624-5.475 5.921 0.43 0.371 0.823 1.102 0.823 2.222 0 1.606-0.014 2.898-0.014 3.293 0 0.319 0.218 0.694 0.825 0.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                </svg>
+            )
+        },
+        {
+            name: 'twitter',
+            href: 'https://x.com/CodeKyles',
+            icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+                <svg fill='currentColor' viewBox='0 0 24 24' {...props}>
+                    <path d="M24 4.557c-0.883 0.392-1.832 0.656-2.828 0.775 1.017-0.609 1.798-1.574 2.165-2.724-0.951 0.564-2.005 0.974-3.127 1.195-0.897-0.957-2.178-1.555-3.594-1.555-2.719 0-4.924 2.205-4.924 4.924 0 0.386 0.043 0.762 0.127 1.124-4.092-0.205-7.719-2.165-10.141-5.144-0.424 0.729-0.666 1.577-0.666 2.476 0 1.71 0.87 3.213 2.188 4.096-0.807-0.026-1.566-0.247-2.228-0.616v0.061c0 2.388 1.698 4.384 3.95 4.838-0.413 0.112-0.849 0.172-1.296 0.172-0.318 0-0.627-0.031-0.929-0.088 0.628 1.956 2.448 3.379 4.604 3.419-1.688 1.323-3.808 2.112-6.115 2.112-0.397 0-0.788-0.023-1.175-0.069 2.179 1.397 4.768 2.212 7.548 2.212 9.057 0 14.009-7.504 14.009-14.009 0-0.213-0.005-0.426-0.014-0.637 0.961-0.694 1.796-1.562 2.457-2.549z"></path>
                 </svg>
             )
         }
-    ]
-  return (
-   <footer className=" py-8">
-    <div className="container max-w-3xl">
-        <div className="md:flex md:items-center md:justify-between">
-            <div className="flex justify-center space-x-6 md:order-2">
-                {navigation.map(item =>(
-                    <a 
-                        key={item.name} 
-                        href={item.href}
-                        target='_blank'
-                        rel='noreferrer noopener'
-                        className='text-muted-foreground hover:text-foreground'
-                        >
-                            <span className="sr-only">{item.name}</span>
-                            <item.icon aria-hidden='true' className='h-5 w-5'/>
+    ];
+    
+    return (
+        <footer className="py-8">
+        <div className="container max-w-3xl">
+            <div className="flex justify-between items-center">
+                <div className="flex justify-center space-x-6">
+                    {navigation.map(item => (
+                        <a key={item.name} href={item.href} className="text-gray-500 hover:text-gray-900">
+                            <item.icon className="h-6 w-6" aria-hidden="true" />
                         </a>
-                ))}
-            </div>
-            <div className="mt-8 md:order-1 md:mt-0">
-                <p className="text-center text-xs leading-5 text-muted-foreground">
-                    &copy: {new Date().getFullYear()} Kelvin Nyadzayo. All rights reserved.
-                </p>
+                    ))}
+                </div>
+                <div className="text-gray-500 ml-auto">
+                    &copy; {new Date().getFullYear()} Kelvin Nyadzayo. All rights reserved.
+                </div>
             </div>
         </div>
-    </div>
-   </footer>
-  )
+    </footer>
+    );
 }
