@@ -30,7 +30,7 @@ export default function ContactForm(){
     })
 
     const processForm: SubmitHandler<Inputs> = async data =>{
-        const result = await sendEmail(data) ;
+        const result = await sendEmail(data,'contact-form') ;
 
         if(result?.error){
             toast.error('An error occured! Please try again')
