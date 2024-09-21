@@ -26,6 +26,7 @@ export const ProjectRequestFormSchema = z.object({
     customBudget: z.string().optional(),
     email: z.string().email('Invalid email address').nonempty('Email is required'),
     phone: z.string().regex(/^(\+263|0)?7\d{8}$/, 'Invalid phone number'),
-    documentation: z.boolean().optional()
+    documentation: z.boolean().optional(),
+    file: z.any().optional()
     
 });
