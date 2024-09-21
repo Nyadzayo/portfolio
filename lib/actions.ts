@@ -56,7 +56,26 @@ export async function sendEmail(data: ContactFormInputs | ProjectRequestFormInpu
     }
 }
 
-export async function subscribe(data: { email: string }) {
+
+type SubscribeResult = {
+    success?: boolean;
+    error?: string;
+};
+
+export async function subscribe(data: { email: string }): Promise<SubscribeResult> {
     const result = NewsletterFormSchema.safeParse(data);
-    // Rest of the subscribe function...
+
+    if (!result.success) {
+        return { error: 'Invalid data' };
+    }
+
+    try {
+        // Simulate an API call to subscribe the user
+        // Replace this with your actual API call
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        return { success: true };
+    } catch (error) {
+        return { error: 'Failed to subscribe' };
+    }
 }
