@@ -1,3 +1,4 @@
+'use server' 
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { ContactFormSchema, NewsletterFormSchema, ProjectRequestFormSchema } from './schemas';
@@ -9,7 +10,7 @@ type ProjectRequestFormInputs = z.infer<typeof ProjectRequestFormSchema>;
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
-export async function sendEmail(data: ContactFormInputs | ProjectRequestFormInputs, formType: 'contact-form' | 'project-request') {
+export async function sendEmail(data:( ContactFormInputs | ProjectRequestFormInputs), formType: 'contact-form' | 'project-request') {
     let result;
     if (formType === 'contact-form') {
         result = ContactFormSchema.safeParse(data);
@@ -27,15 +28,14 @@ export async function sendEmail(data: ContactFormInputs | ProjectRequestFormInpu
 
     try {
         const { email, name, message, projectDescription, category, budget, phone, documentation } = result.data as any;
-        const ccEmails = ['kelvin.nyadzayo16@gmail.com'];
-        if (formType === 'project-request') {
-            ccEmails.push(email);
-        }
+        const toEmails = ['kelvin.nyadzayo16@gmail.com'];
+        const ccEmails = formType === 'project-request' ? [email] : [];
+
 
         const emailData = {
             from: 'Kelvin <onboarding@resend.dev>',
-            to: [email],
-            cc: ccEmails,
+            to: toEmails,
+            
             subject: formType === 'contact-form' ? 'Contact form submission' : 'Project request submission',
             text: formType === 'contact-form'
                 ? `Name: ${name} \nEmail: ${email}\nMessage: ${message}`

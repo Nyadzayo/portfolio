@@ -4,24 +4,14 @@ import { z } from 'zod';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { SubmitHandler, useForm, Controller } from 'react-hook-form';
+import { ProjectRequestFormSchema } from '@/lib/schemas'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { sendEmail } from '@/lib/actions';
 
-// Define the schema for the project request form
-const ProjectRequestFormSchema = z.object({
-    name: z.string().nonempty('Name is required'),
-    projectDescription: z.string().nonempty('Project Description is required'),
-    category: z.string().nonempty('Category is required'),
-    budget: z.string().nonempty('Budget is required'),
-    customBudget: z.string().optional(),
-    email: z.string().email('Invalid email address').nonempty('Email is required'),
-    phone: z.string().regex(/^(\+263|0)?7\d{8}$/, 'Invalid phone number'),
-    documentation: z.boolean().optional()
-    
-});
+
 
 type Inputs = z.infer<typeof ProjectRequestFormSchema>;
 
@@ -187,16 +177,7 @@ export default function ProjectRequestForm() {
                                 </p>
                             )}
                         </div>
-                        <div className="mt-6">
-                            <Button
-                                type='submit'
-                                disabled={isSubmitting}
-                                className='w-full disabled:opacity-50'
-                            >
-                                {isSubmitting ? 'Submitting ...' : 'Submit Project Request'}
-                            </Button>
-                        </div>
-                         {/* Documentation Checkbox */}
+                        {/* Documentation Checkbox */}
                          <div className="sm:col-span-2">
                             <label className="flex items-center">
                                 <input
@@ -207,6 +188,16 @@ export default function ProjectRequestForm() {
                                 <span className="ml-2">Request documentation for the project (additional fee)</span>
                             </label>
                         </div>
+                        <div className="mt-6">
+                            <Button
+                                type='submit'
+                                disabled={isSubmitting}
+                                className='w-full disabled:opacity-50'
+                            >
+                                {isSubmitting ? 'Submitting ...' : 'Submit Project Request'}
+                            </Button>
+                        </div>
+                         
                         <p className="mt-4 text-xs text-muted-foreground">
                             By submitting this form, I agree to the {' '}
                             <Link href='/privacy' className='font-bold'>
