@@ -27,9 +27,23 @@ export async function sendEmail(data:( ContactFormInputs | ProjectRequestFormInp
     }
 
     try {
-        const { email, name, message, projectDescription, category, budget, phone, documentation } = result.data as any;
+        const { email, name, message, projectDescription, category, budget, phone, documentation,file } = result.data as any;
         const toEmails = ['kelvin.nyadzayo16@gmail.com'];
         const ccEmails = formType === 'project-request' ? [email] : [];
+         // If the form includes a file, convert it to a format that can be attached
+         let attachments = [];
+         if (file) {
+             const attachment = file.get('file') as File;
+             if (attachment) {
+                 const fileData = await attachment.arrayBuffer();
+                 const base64File = Buffer.from(fileData).toString('base64');
+                 attachments.push({
+                     filename: attachment.name,
+                     content: base64File,
+                     encoding: 'base64',
+                 });
+             }
+         }
 
 
         const emailData = {
@@ -42,7 +56,8 @@ export async function sendEmail(data:( ContactFormInputs | ProjectRequestFormInp
                 : `Name: ${name} \nEmail: ${email}\nProject Description: ${projectDescription}\nCategory: ${category}\nBudget: ${budget}\nPhone: ${phone}\nDocumentation: ${documentation ? 'Yes' : 'No'}`,
             react: formType === 'contact-form'
                 ? ContactFormEmail({ name, email, message })
-                : ProjectRequestEmail({ name, email, projectDescription, category, budget, phone, documentation })
+                : ProjectRequestEmail({ name, email, projectDescription, category, budget, phone, documentation }),
+                attachments,
         };
 
         const { data: emailResponse, error } = await resend.emails.send(emailData);

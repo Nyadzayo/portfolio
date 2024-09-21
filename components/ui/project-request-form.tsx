@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { sendEmail } from '@/lib/actions';
+import FormData from 'form-data'; 
 
 
 
@@ -33,14 +34,17 @@ export default function ProjectRequestForm() {
             customBudget: '',
             email: '',
             phone: '',
-            documentation: false
+            documentation: false,
+            file: null
         }
     });
 
     const selectedBudget = watch('budget');
 
     const processForm: SubmitHandler<Inputs> = async data => {
-        const result = await sendEmail(data, 'project-request');
+        const formData = new FormData();
+        formData.append('file', data.file[0]); 
+        const result = await sendEmail({ ...data, file: formData }, 'project-request');
 
         if (result?.error) {
             toast.error('An error occurred! Please try again');
@@ -90,6 +94,23 @@ export default function ProjectRequestForm() {
                             {errors.projectDescription?.message && (
                                 <p className="ml-1 mt-2 text-sm text-rose-400">
                                     {errors.projectDescription.message}
+                                </p>
+                            )}
+                        </div>
+                        {/* Documentation File Upload */}
+                        <div className="sm:col-span-2">
+                            <label className="block text-sm font-medium text-gray-700">
+                                Upload Documentation (PDF, DOCX, etc.)
+                            </label>
+                            <input
+                                type="file"
+                                accept=".pdf,.docx"
+                                {...register('file')}
+                                className="mt-1 block w-full"
+                            />
+                            {errors.file?.message && (
+                                <p className="ml-1 mt-2 text-sm text-rose-400">
+                                    {errors.file?.message?.toString()}
                                 </p>
                             )}
                         </div>
