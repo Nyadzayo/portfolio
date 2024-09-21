@@ -7,7 +7,7 @@ import ProjectRequestEmail from '@/emails/project-request-email';
 type ContactFormInputs = z.infer<typeof ContactFormSchema>;
 type ProjectRequestFormInputs = z.infer<typeof ProjectRequestFormSchema>;
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
 export async function sendEmail(data: ContactFormInputs | ProjectRequestFormInputs, formType: 'contact-form' | 'project-request') {
     let result;
