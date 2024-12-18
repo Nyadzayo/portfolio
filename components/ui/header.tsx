@@ -23,6 +23,11 @@ export default function Header() {
                 </Link>
             </li>
             <li className="transition-colors hover:text-foreground">
+                <Link href='/project-request'>
+                    Request A Project
+                </Link>
+            </li>
+            <li className="transition-colors hover:text-foreground">
                 <Link href='/contact'>
                     Contact
                 </Link>

@@ -15,6 +15,7 @@
     "@tailwindcss/typography": "^0.5.15",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "form-data": "^4.0.0",
     "gray-matter": "^4.0.3",
     "next": "14.2.7",
     "next-mdx-remote": "^5.0.0",
